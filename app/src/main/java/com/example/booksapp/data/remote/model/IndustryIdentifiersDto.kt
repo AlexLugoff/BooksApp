@@ -3,7 +3,7 @@ package com.example.booksapp
 import com.google.gson.annotations.SerializedName
 
 
-data class IndustryIdentifiers(
+data class IndustryIdentifiersDto(
 
     @SerializedName("type")
     var type: String? = null,

@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.booksapp.DEFAULT_SEARCH_BOOK_PAGE_SIZE
 import com.example.booksapp.DEFAULT_SEARCH_BOOK_QUERY
-import com.example.booksapp.data.BooksRepository
+import com.example.booksapp.domain.usecases.GetBooksUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BooksViewModel @Inject constructor(
-    private val booksRepository: BooksRepository
+    private val getBooksUseCase: GetBooksUseCase
 ) : ViewModel() {
 
     var booksUiState: BooksUiState by mutableStateOf(BooksUiState.Loading)
@@ -41,7 +41,7 @@ class BooksViewModel @Inject constructor(
         viewModelScope.launch {
             booksUiState = BooksUiState.Loading
             booksUiState = try {
-                BooksUiState.Success(booksRepository.getBooks(query, maxResults))
+                BooksUiState.Success(getBooksUseCase(query, maxResults))
             } catch (e: IOException) {
                 BooksUiState.Error
             } catch (e: HttpException) {

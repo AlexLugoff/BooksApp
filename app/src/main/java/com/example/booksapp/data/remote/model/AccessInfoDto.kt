@@ -3,7 +3,7 @@ package com.example.booksapp
 import com.google.gson.annotations.SerializedName
 
 
-data class AccessInfo(
+data class AccessInfoDto(
 
     @SerializedName("country")
     var country: String? = null,
@@ -16,9 +16,9 @@ data class AccessInfo(
     @SerializedName("textToSpeechPermission")
     var textToSpeechPermission: String? = null,
     @SerializedName("epub")
-    var epub: Epub? = Epub(),
+    var epub: EpubDto? = EpubDto(),
     @SerializedName("pdf")
-    var pdf: Pdf? = Pdf(),
+    var pdf: PdfDto? = PdfDto(),
     @SerializedName("webReaderLink")
     var webReaderLink: String? = null,
     @SerializedName("accessViewStatus")

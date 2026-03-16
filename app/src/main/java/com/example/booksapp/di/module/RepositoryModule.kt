@@ -1,7 +1,7 @@
 package com.example.booksapp.di.module
 
-import com.example.booksapp.data.BooksRepository
-import com.example.booksapp.data.BooksRepositoryImpl
+import com.example.booksapp.domain.repository.BooksRepository
+import com.example.booksapp.data.repository.BooksRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

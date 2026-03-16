@@ -3,7 +3,7 @@ package com.example.booksapp
 import com.google.gson.annotations.SerializedName
 
 
-data class ReadingModes(
+data class ReadingModesDto(
 
     @SerializedName("text")
     var text: Boolean? = null,

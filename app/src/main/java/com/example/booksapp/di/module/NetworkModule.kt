@@ -1,7 +1,7 @@
 package com.example.booksapp.di.module
 
 import com.example.booksapp.BASE_URL
-import com.example.booksapp.network.BookApiService
+import com.example.booksapp.data.remote.BookApiService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

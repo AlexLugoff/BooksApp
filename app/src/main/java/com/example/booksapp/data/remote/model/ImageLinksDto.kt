@@ -3,7 +3,7 @@ package com.example.booksapp
 import com.google.gson.annotations.SerializedName
 
 
-data class ImageLinks(
+data class ImageLinksDto(
 
     @SerializedName("smallThumbnail")
     var smallThumbnail: String? = null,

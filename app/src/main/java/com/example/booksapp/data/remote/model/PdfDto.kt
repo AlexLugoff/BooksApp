@@ -3,7 +3,7 @@ package com.example.booksapp
 import com.google.gson.annotations.SerializedName
 
 
-data class Pdf(
+data class PdfDto(
 
     @SerializedName("isAvailable")
     var isAvailable: Boolean? = null,

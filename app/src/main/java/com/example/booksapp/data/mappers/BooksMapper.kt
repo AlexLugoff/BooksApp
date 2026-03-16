@@ -1,9 +1,9 @@
 package com.example.booksapp.data.mappers
 
-import com.example.booksapp.BookShelf
-import com.example.booksapp.data.models.Book
+import com.example.booksapp.BookShelfDto
+import com.example.booksapp.domain.models.Book
 
-fun BookShelf.toBooksList(): List<Book> {
+fun BookShelfDto.toBooksList(): List<Book> {
     return this.items.map {
         Book(
             title = it.volumeInfo?.title,
