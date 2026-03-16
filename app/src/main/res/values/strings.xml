@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BooksApp</string>
+    <string name="loading_failed">Failed to load</string>
+
+    <string name="retry">Retry</string>
+
+    <string name="loading">Loading</string>
+
+    <string name="content_description">Book</string>
+    <string name="search_icon_text">Search Icon</string>
+    <string name="search_hint">Search...</string>
+    <string name="close_icon_text">Close Icon</string>
+</resources>
