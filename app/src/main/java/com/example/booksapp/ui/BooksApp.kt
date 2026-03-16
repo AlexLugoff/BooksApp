@@ -9,7 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.booksapp.data.models.Book
+import com.example.booksapp.domain.models.Book
 import com.example.booksapp.ui.screens.HomeScreen
 
 @OptIn(ExperimentalMaterial3Api::class)

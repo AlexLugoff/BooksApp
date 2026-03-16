@@ -1,6 +1,6 @@
-package com.example.booksapp.network
+package com.example.booksapp.data.remote
 
-import com.example.booksapp.BookShelf
+import com.example.booksapp.BookShelfDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
@@ -19,5 +19,5 @@ interface BookApiService {
     suspend fun bookSearch(
         @Query("q") searchQuery: String,
         @Query("maxResults") maxResults: Int
-    ): BookShelf
+    ): BookShelfDto
 }

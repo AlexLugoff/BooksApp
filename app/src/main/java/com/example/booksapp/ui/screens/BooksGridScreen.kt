@@ -19,11 +19,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.booksapp.R
-import com.example.booksapp.data.models.Book
+import com.example.booksapp.domain.models.Book
 
 @Composable
 fun BooksGridScreen(
@@ -64,6 +65,8 @@ fun BooksCard(
             book.title?.let { title ->
                 Text(
                     text = title,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
                 )

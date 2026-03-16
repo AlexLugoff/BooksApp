@@ -1,8 +1,9 @@
-package com.example.booksapp.data
+package com.example.booksapp.data.repository
 
 import com.example.booksapp.data.mappers.toBooksList
-import com.example.booksapp.data.models.Book
-import com.example.booksapp.network.BookApiService
+import com.example.booksapp.domain.models.Book
+import com.example.booksapp.domain.repository.BooksRepository
+import com.example.booksapp.data.remote.BookApiService
 import javax.inject.Inject
 
 class BooksRepositoryImpl @Inject constructor(

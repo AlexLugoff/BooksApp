@@ -3,7 +3,7 @@ package com.example.booksapp
 import com.google.gson.annotations.SerializedName
 
 
-data class PanelizationSummary(
+data class PanelizationSummaryDto(
 
     @SerializedName("containsEpubBubbles")
     var containsEpubBubbles: Boolean? = null,

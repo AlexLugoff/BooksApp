@@ -3,7 +3,7 @@ package com.example.booksapp
 import com.google.gson.annotations.SerializedName
 
 
-data class VolumeInfo(
+data class VolumeInfoDto(
 
     @SerializedName("title")
     var title: String? = null,
@@ -16,9 +16,9 @@ data class VolumeInfo(
     @SerializedName("description")
     var description: String? = null,
     @SerializedName("industryIdentifiers")
-    var industryIdentifiers: ArrayList<IndustryIdentifiers> = arrayListOf(),
+    var industryIdentifiers: ArrayList<IndustryIdentifiersDto> = arrayListOf(),
     @SerializedName("readingModes")
-    var readingModes: ReadingModes? = ReadingModes(),
+    var readingModes: ReadingModesDto? = ReadingModesDto(),
     @SerializedName("pageCount")
     var pageCount: Int? = null,
     @SerializedName("printType")
@@ -32,9 +32,9 @@ data class VolumeInfo(
     @SerializedName("contentVersion")
     var contentVersion: String? = null,
     @SerializedName("panelizationSummary")
-    var panelizationSummary: PanelizationSummary? = PanelizationSummary(),
+    var panelizationSummary: PanelizationSummaryDto? = PanelizationSummaryDto(),
     @SerializedName("imageLinks")
-    var imageLinks: ImageLinks? = ImageLinks(),
+    var imageLinks: ImageLinksDto? = ImageLinksDto(),
     @SerializedName("language")
     var language: String? = null,
     @SerializedName("previewLink")

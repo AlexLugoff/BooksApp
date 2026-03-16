@@ -1,4 +1,4 @@
-package com.example.booksapp.data.models
+package com.example.booksapp.domain.models
 
 class Book(
     val title: String?,

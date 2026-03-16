@@ -3,7 +3,7 @@ package com.example.booksapp
 import com.google.gson.annotations.SerializedName
 
 
-data class SaleInfo(
+data class SaleInfoDto(
 
     @SerializedName("country")
     var country: String? = null,
