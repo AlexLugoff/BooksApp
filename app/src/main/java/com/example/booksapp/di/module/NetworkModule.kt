@@ -2,8 +2,6 @@ package com.example.booksapp.di.module
 
 import com.example.booksapp.BASE_URL
 import com.example.booksapp.data.remote.BookApiService
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,16 +18,23 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideBaseApi(
-        httpLoggingInterceptor: HttpLoggingInterceptor,
-        gsonConverterFactory: GsonConverterFactory
-    ): BookApiService {
-        val okHttpClient = OkHttpClient.Builder()
+    fun provideOkHttpClient(
+        httpLoggingInterceptor: HttpLoggingInterceptor
+    ): OkHttpClient {
+        return OkHttpClient.Builder()
             .connectTimeout(BookApiService.CONNECT_TIMEOUT, BookApiService.timeUnit)
             .writeTimeout(BookApiService.WRITE_TIMEOUT, BookApiService.timeUnit)
             .readTimeout(BookApiService.READ_TIMEOUT, BookApiService.timeUnit)
             .addInterceptor(httpLoggingInterceptor)
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideBaseApi(
+        okHttpClient: OkHttpClient,
+        gsonConverterFactory: GsonConverterFactory
+    ): BookApiService {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(gsonConverterFactory)
