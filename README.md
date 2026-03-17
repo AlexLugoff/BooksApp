@@ -22,3 +22,9 @@
 * **Networking:** Retrofit 2 + OkHttp (с настроенными таймаутами и логированием).
 * **JSON Parsing:** Gson.
 * **Image Loading:** Coil (с поддержкой кроссфейда и обработкой состояний загрузки/ошибки).
+
+## 📸 Как это выглядит
+<p align="left">
+  <img src="screenshots/Screenshot_20260317_215419.png" width="300" />
+  <img src="screenshots/Screenshot_20260317_215518.png" width="300" />
+</p>
