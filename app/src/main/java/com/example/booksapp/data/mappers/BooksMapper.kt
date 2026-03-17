@@ -10,5 +10,5 @@ fun BookShelfDto.toBooksList(): List<Book> {
             previewLink = it.volumeInfo?.previewLink,
             imageLink = it.volumeInfo?.imageLinks?.thumbnail
         )
-    } ?: emptyList()
+    }
 }
