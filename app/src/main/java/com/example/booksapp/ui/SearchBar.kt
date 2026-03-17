@@ -1,7 +1,10 @@
 package com.example.booksapp.ui
 
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -63,7 +66,7 @@ fun ClosedAppBar(onSearchClicked: () -> Unit) {
                 Icon(
                     imageVector = Icons.Filled.Search,
                     contentDescription = stringResource(R.string.search_icon_text),
-                    tint = Color.White
+                    tint = Color.Black
                 )
             }
         })
@@ -79,12 +82,14 @@ fun OpenedAppBar(
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .height(56.dp),
+            .windowInsetsPadding(WindowInsets.statusBars),
         shadowElevation = 8.dp,
         color = MaterialTheme.colorScheme.primary
     ) {
         TextField(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp),
             value = text,
             onValueChange = {
                 onTextChange(it)
@@ -93,7 +98,7 @@ fun OpenedAppBar(
                 Text(
                     modifier = Modifier.alpha(ContentAlpha.medium),
                     text = stringResource(R.string.search_hint),
-                    color = Color.White
+                    color = Color.Black
                 )
             },
             textStyle = TextStyle(
@@ -107,7 +112,7 @@ fun OpenedAppBar(
                     Icon(
                         Icons.Filled.Search,
                         stringResource(R.string.search_icon_text),
-                        tint = Color.White
+                        tint = Color.Black
                     )
                 }
             },
@@ -122,7 +127,7 @@ fun OpenedAppBar(
                     Icon(
                         imageVector = Icons.Filled.Close,
                         contentDescription = stringResource(R.string.close_icon_text),
-                        tint = Color.White
+                        tint = Color.Black
                     )
                 }
             },
