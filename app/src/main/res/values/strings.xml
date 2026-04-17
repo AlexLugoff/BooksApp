@@ -9,6 +9,7 @@
     <string name="close_icon_text">Close Search</string>
     <string name="no_title">No Title Available</string>
     <string name="back_button">Back</string>
+    <string name="open_in_browser">Open in browser</string>
     <string name="app_bar_animation">App Bar Animation</string>
 
     <!-- Error Messages -->
