@@ -1,13 +1,12 @@
 package com.example.booksapp
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.booksapp.ui.BooksApp
-import com.example.booksapp.ui.theme.BooksAppTheme
+import androidx.navigation.compose.rememberNavController
+import com.example.booksapp.core.ui.theme.BooksAppTheme
+import com.example.booksapp.navigation.BooksNavGraph
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,10 +17,9 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             BooksAppTheme {
-                BooksApp(
-                    onBookClicked = {
-                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(it.previewLink)))
-                    }
+                val navController = rememberNavController()
+                BooksNavGraph(
+                    navController = navController
                 )
             }
         }
