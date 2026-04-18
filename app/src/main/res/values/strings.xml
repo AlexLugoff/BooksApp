@@ -20,6 +20,10 @@
     <string name="error_no_books_found">No books found for this query.</string>
     <string name="about_book">About this book</string>
     <string name="no_description">No description available.</string>
-    <string name="pages_label">%1$d pages</string>
-    <string name="language_en">EN</string>
+    <string name="pages_label">%1$d</string>
+    <string name="pages_title">Pages</string>
+    <string name="category_title">Category</string>
+    <string name="language_title">Language</string>
+    <string name="read_more">Read more</string>
+    <string name="read_less">Read less</string>
 </resources>

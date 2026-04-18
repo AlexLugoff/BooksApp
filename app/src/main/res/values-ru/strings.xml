@@ -22,6 +22,10 @@
     <!-- Детали книги -->
     <string name="about_book">О книге</string>
     <string name="no_description">Описание отсутствует.</string>
-    <string name="pages_label">Страниц: %1$d</string>
-    <string name="language_en">АНГЛ</string>
+    <string name="pages_label">%1$d</string>
+    <string name="pages_title">Страниц</string>
+    <string name="category_title">Категория</string>
+    <string name="language_title">Язык</string>
+    <string name="read_more">Читать далее</string>
+    <string name="read_less">Скрыть</string>
 </resources>

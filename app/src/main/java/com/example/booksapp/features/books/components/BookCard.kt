@@ -20,6 +20,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.booksapp.R
 import com.example.booksapp.core.model.Book
+import com.example.booksapp.core.utils.getHttpsImageLink
 
 @Composable
 fun BookCard(
@@ -39,7 +40,7 @@ fun BookCard(
                     .fillMaxWidth()
                     .aspectRatio(0.7f),
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(book.imageLink?.replace("http", "https"))
+                    .data(book.getHttpsImageLink())
                     .crossfade(true)
                     .build(),
                 error = painterResource(R.drawable.ic_broken_image),

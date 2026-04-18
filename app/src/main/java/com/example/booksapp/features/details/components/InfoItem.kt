@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 fun InfoItem(
     icon: ImageVector,
     label: String,
+    title: String,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -34,7 +35,13 @@ fun InfoItem(
         Text(
             text = label,
             style = MaterialTheme.typography.labelLarge,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onSurface
+        )
+        Text(
+            text = title,
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
 }

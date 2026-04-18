@@ -7,6 +7,7 @@ data class Book(
     val description: String? = null,
     val pageCount: Int? = null,
     val categories: List<String> = emptyList(),
+    val language: String? = null,
     val previewLink: String? = null,
     val imageLink: String? = null
 )

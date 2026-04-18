@@ -12,6 +12,7 @@ fun BookShelfDto.toBooksList(): List<Book> {
             description = it.volumeInfo?.description,
             pageCount = it.volumeInfo?.pageCount,
             categories = it.volumeInfo?.categories ?: emptyList(),
+            language = it.volumeInfo?.language,
             previewLink = it.volumeInfo?.previewLink,
             imageLink = it.volumeInfo?.imageLinks?.thumbnail
         )

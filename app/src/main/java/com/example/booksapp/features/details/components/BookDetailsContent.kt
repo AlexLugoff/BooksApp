@@ -1,6 +1,9 @@
 package com.example.booksapp.features.details.components
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,14 +26,22 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -38,6 +49,9 @@ import coil.request.ImageRequest
 import com.example.booksapp.R
 import com.example.booksapp.core.model.Book
 import com.example.booksapp.core.ui.theme.BooksAppTheme
+import com.example.booksapp.core.utils.getAuthorsDisplay
+import com.example.booksapp.core.utils.getHttpsImageLink
+import com.example.booksapp.core.utils.parseHtml
 
 @Composable
 fun BookDetailsContent(
@@ -53,7 +67,7 @@ fun BookDetailsContent(
 
         Column(modifier = Modifier.padding(24.dp)) {
             BookInfoSection(book)
-            
+
             Spacer(modifier = Modifier.height(24.dp))
             HorizontalDivider()
             Spacer(modifier = Modifier.height(24.dp))
@@ -68,10 +82,37 @@ private fun BookHeader(book: Book) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(280.dp)
-            .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)),
+            .height(280.dp),
         contentAlignment = Alignment.Center
     ) {
+        // Blur background
+        AsyncImage(
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(book.getHttpsImageLink())
+                .crossfade(true)
+                .build(),
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxSize()
+                .blur(20.dp),
+            contentScale = ContentScale.Crop,
+            alpha = 0.3f
+        )
+
+        // Gradient overlay for better contrast
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            MaterialTheme.colorScheme.surface
+                        )
+                    )
+                )
+        )
+
         Card(
             modifier = Modifier
                 .size(160.dp, 240.dp)
@@ -81,7 +122,7 @@ private fun BookHeader(book: Book) {
         ) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(book.imageLink?.replace("http", "https"))
+                    .data(book.getHttpsImageLink())
                     .crossfade(true)
                     .build(),
                 contentDescription = book.title,
@@ -106,7 +147,7 @@ private fun BookInfoSection(book: Book) {
 
         if (book.authors.isNotEmpty()) {
             Text(
-                text = book.authors.joinToString(", "),
+                text = book.getAuthorsDisplay(),
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.secondary,
                 modifier = Modifier.padding(vertical = 4.dp)
@@ -117,21 +158,25 @@ private fun BookInfoSection(book: Book) {
 
         Row(
             modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             InfoItem(
                 icon = Icons.Default.Pages,
                 label = book.pageCount?.let { stringResource(R.string.pages_label, it) } ?: "-",
+                title = stringResource(R.string.pages_title),
                 modifier = Modifier.weight(1f)
             )
             InfoItem(
                 icon = Icons.AutoMirrored.Filled.MenuBook,
-                label = book.categories.firstOrNull() ?: "-",
+                label = book.categories.firstOrNull()?.take(12) ?: "-",
+                title = stringResource(R.string.category_title),
                 modifier = Modifier.weight(1f)
             )
             InfoItem(
                 icon = Icons.Default.Public,
-                label = stringResource(R.string.language_en),
+                label = book.language?.uppercase() ?: "-",
+                title = stringResource(R.string.language_title),
                 modifier = Modifier.weight(1f)
             )
         }
@@ -140,19 +185,55 @@ private fun BookInfoSection(book: Book) {
 
 @Composable
 private fun BookDescriptionSection(description: String?) {
-    Column {
+    var isExpanded by remember { mutableStateOf(false) }
+    var hasOverflow by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .animateContentSize()
+            .then(
+                if (hasOverflow || isExpanded) {
+                    Modifier.clickable { isExpanded = !isExpanded }
+                } else {
+                    Modifier
+                }
+            )
+    ) {
         Text(
             text = stringResource(R.string.about_book),
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold
         )
         Spacer(modifier = Modifier.height(8.dp))
+
+        val annotatedDescription = description.parseHtml(
+            fallback = stringResource(R.string.no_description)
+        )
+
         Text(
-            text = description ?: stringResource(R.string.no_description),
+            text = annotatedDescription,
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
-            textAlign = TextAlign.Justify
+            textAlign = TextAlign.Justify,
+            maxLines = if (isExpanded) Int.MAX_VALUE else 4,
+            overflow = TextOverflow.Ellipsis,
+            onTextLayout = { textLayoutResult ->
+                if (!isExpanded) {
+                    hasOverflow = textLayoutResult.hasVisualOverflow
+                }
+            }
         )
+
+        if (hasOverflow || isExpanded) {
+            Text(
+                text = if (isExpanded) stringResource(R.string.read_less) else stringResource(R.string.read_more),
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.primary,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(top = 4.dp)
+            )
+        }
     }
 }
 
