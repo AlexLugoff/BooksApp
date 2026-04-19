@@ -18,19 +18,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.booksapp.R
-import com.example.booksapp.features.books.models.SearchWidgetState
+import com.example.booksapp.core.ui.components.BooksTopAppBar
+import com.example.booksapp.core.utils.ANIMATION_LABEL_APP_BAR
+import com.example.booksapp.features.books.SearchWidgetState
 
-/**
- * Main AppBar of the application with Search support.
- * Follows Material 3.1+ design guidelines (using the latest SearchBar API).
- */
 @Composable
 fun MainAppBar(
     searchWidgetState: SearchWidgetState,
@@ -46,7 +42,7 @@ fun MainAppBar(
         transitionSpec = {
             fadeIn().togetherWith(fadeOut())
         },
-        label = "AppBarAnimation"
+        label = ANIMATION_LABEL_APP_BAR
     ) { state ->
         when (state) {
             SearchWidgetState.CLOSED -> {
@@ -55,6 +51,7 @@ fun MainAppBar(
                     modifier = modifier
                 )
             }
+
             SearchWidgetState.OPENED -> {
                 OpenedSearchBar(
                     text = searchTextState,
@@ -74,19 +71,9 @@ fun ClosedAppBar(
     onSearchClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    TopAppBar(
+    BooksTopAppBar(
         modifier = modifier,
-        title = {
-            Text(
-                text = stringResource(R.string.app_name),
-                style = MaterialTheme.typography.titleLarge
-            )
-        },
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.surface,
-            titleContentColor = MaterialTheme.colorScheme.onSurface,
-            actionIconContentColor = MaterialTheme.colorScheme.onSurfaceVariant
-        ),
+        title = stringResource(R.string.app_name),
         actions = {
             IconButton(onClick = onSearchClicked) {
                 Icon(

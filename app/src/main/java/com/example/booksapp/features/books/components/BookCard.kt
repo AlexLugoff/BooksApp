@@ -20,6 +20,8 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.booksapp.R
 import com.example.booksapp.core.model.Book
+import com.example.booksapp.core.utils.BOOK_CARD_ASPECT_RATIO
+import com.example.booksapp.core.utils.CROSSFADE_DURATION_MS
 import com.example.booksapp.core.utils.getHttpsImageLink
 
 @Composable
@@ -38,10 +40,10 @@ fun BookCard(
             AsyncImage(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .aspectRatio(0.7f),
+                    .aspectRatio(BOOK_CARD_ASPECT_RATIO),
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(book.getHttpsImageLink())
-                    .crossfade(true)
+                    .crossfade(CROSSFADE_DURATION_MS)
                     .build(),
                 error = painterResource(R.drawable.ic_broken_image),
                 placeholder = painterResource(R.drawable.loading_img),

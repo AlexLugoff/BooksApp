@@ -1,4 +1,4 @@
-package com.example.booksapp.features.details.models
+package com.example.booksapp.features.details
 
 import com.example.booksapp.core.model.Book
 

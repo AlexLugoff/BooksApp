@@ -1,6 +1,6 @@
 package com.example.booksapp.core.di
 
-import com.example.booksapp.BASE_URL
+import com.example.booksapp.core.utils.BASE_URL
 import com.example.booksapp.core.network.BookApiService
 import dagger.Module
 import dagger.Provides

@@ -5,8 +5,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.booksapp.features.books.BooksApp
-import com.example.booksapp.features.details.screens.BookDetailsScreen
+import com.example.booksapp.features.books.BooksScreen
+import com.example.booksapp.features.details.BookDetailsScreen
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -26,7 +26,7 @@ fun BooksNavGraph(
         modifier = modifier
     ) {
         composable<BooksRoute> {
-            BooksApp(
+            BooksScreen(
                 onBookClicked = { book ->
                     navController.navigate(BookDetailsRoute(id = book.id))
                 }

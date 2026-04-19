@@ -49,6 +49,11 @@ import coil.request.ImageRequest
 import com.example.booksapp.R
 import com.example.booksapp.core.model.Book
 import com.example.booksapp.core.ui.theme.BooksAppTheme
+import com.example.booksapp.core.utils.BLUR_RADIUS_DP
+import com.example.booksapp.core.utils.BOOK_DETAILS_COVER_HEIGHT_DP
+import com.example.booksapp.core.utils.BOOK_DETAILS_COVER_WIDTH_DP
+import com.example.booksapp.core.utils.BOOK_DETAILS_HEADER_HEIGHT_DP
+import com.example.booksapp.core.utils.CROSSFADE_DURATION_MS
 import com.example.booksapp.core.utils.getAuthorsDisplay
 import com.example.booksapp.core.utils.getHttpsImageLink
 import com.example.booksapp.core.utils.parseHtml
@@ -82,19 +87,19 @@ private fun BookHeader(book: Book) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(280.dp),
+            .height(BOOK_DETAILS_HEADER_HEIGHT_DP.dp),
         contentAlignment = Alignment.Center
     ) {
         // Blur background
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
                 .data(book.getHttpsImageLink())
-                .crossfade(true)
+                .crossfade(CROSSFADE_DURATION_MS)
                 .build(),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxSize()
-                .blur(20.dp),
+                .blur(BLUR_RADIUS_DP.dp),
             contentScale = ContentScale.Crop,
             alpha = 0.3f
         )
@@ -115,7 +120,7 @@ private fun BookHeader(book: Book) {
 
         Card(
             modifier = Modifier
-                .size(160.dp, 240.dp)
+                .size(BOOK_DETAILS_COVER_WIDTH_DP.dp, BOOK_DETAILS_COVER_HEIGHT_DP.dp)
                 .padding(vertical = 16.dp),
             elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
             shape = RoundedCornerShape(8.dp)
@@ -123,7 +128,7 @@ private fun BookHeader(book: Book) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(book.getHttpsImageLink())
-                    .crossfade(true)
+                    .crossfade(CROSSFADE_DURATION_MS)
                     .build(),
                 contentDescription = book.title,
                 modifier = Modifier.fillMaxSize(),

@@ -10,6 +10,7 @@
     <string name="no_title">Название не указано</string>
     <string name="back_button">Назад</string>
     <string name="open_in_browser">Открыть в браузере</string>
+    <string name="share_icon_text">Поделиться книгой</string>
     <string name="app_bar_animation">Анимация панели</string>
 
     <!-- Сообщения об ошибках -->
