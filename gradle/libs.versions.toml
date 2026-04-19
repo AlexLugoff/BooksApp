@@ -29,6 +29,9 @@ kotlinxSerializationJson = "1.11.0"
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
+mockk = "1.14.9"
+kotlinxCoroutinesTest = "1.10.2"
+turbine = "1.2.1"
 
 [libraries]
 # AndroidX & Compose
@@ -68,6 +71,9 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -97,4 +103,10 @@ hiltBundle = [
 lifecycle = [
     "androidx-lifecycle-runtime-ktx",
     "androidx-lifecycle-viewmodel-compose"
+]
+testBundle = [
+    "junit",
+    "mockk",
+    "kotlinx-coroutines-test",
+    "turbine"
 ]

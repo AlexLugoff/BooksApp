@@ -71,7 +71,7 @@ dependencies {
     implementation(libs.timber)
 
     // Testing
-    testImplementation(libs.junit)
+    testImplementation(libs.bundles.testBundle)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
