@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Книги</string>
+    <string name="loading_failed">Ошибка загрузки книг</string>
+    <string name="retry">Повторить</string>
+    <string name="loading">Загрузка…</string>
+    <string name="content_description_book">Обложка книги</string>
+    <string name="search_icon_text">Поиск</string>
+    <string name="search_hint">Поиск книг…</string>
+    <string name="close_icon_text">Закрыть поиск</string>
+    <string name="no_title">Название не указано</string>
+    <string name="back_button">Назад</string>
+    <string name="open_in_browser">Открыть в браузере</string>
+    <string name="share_icon_text">Поделиться книгой</string>
+    <string name="app_bar_animation">Анимация панели</string>
+
+    <!-- Сообщения об ошибках -->
+    <string name="error_network">Сбой сети. Проверьте подключение к интернету.</string>
+    <string name="error_service_unavailable">Сервис временно недоступен. API Google Книг перегружен. Попробуйте еще раз через минуту.</string>
+    <string name="error_server">Ошибка сервера: %1$d</string>
+    <string name="error_unknown">Произошла неизвестная ошибка</string>
+    <string name="error_no_books_found">По вашему запросу ничего не найдено.</string>
+
+    <!-- Детали книги -->
+    <string name="about_book">О книге</string>
+    <string name="no_description">Описание отсутствует.</string>
+    <string name="pages_label">%1$d</string>
+    <string name="pages_title">Страниц</string>
+    <string name="category_title">Категория</string>
+    <string name="language_title">Язык</string>
+    <string name="read_more">Читать далее</string>
+    <string name="read_less">Скрыть</string>
+</resources>
