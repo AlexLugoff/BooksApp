@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.booksapp"
+    namespace = "io.github.alexlugoff.booksapp"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.example.booksapp"
+        applicationId = "io.github.alexlugoff.booksapp"
         minSdk = 29
         targetSdk = 36
         versionCode = 1

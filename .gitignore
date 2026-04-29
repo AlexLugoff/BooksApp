@@ -1,34 +1,58 @@
-# Gradle and build artifacts
+# --- Build Artifacts ---
 .gradle/
 build/
 **/build/
+bin/
+gen/
+out/
 
-# IDE settings
+# --- IDE Settings ---
 .idea/
 *.iml
 *.ipr
 *.iws
 .vscode/
+.project
+.classpath
+.settings/
+*.swp
+*.patch
+*.diff
 
-# Local configuration
+# --- Local Configuration & Secrets ---
 local.properties
+secrets.properties
 .kotlin/
 .navigation/
-
-# Android generated files
 captures/
 .externalNativeBuild/
 .cxx/
+memory.py
+
+# --- Output Files ---
 *.apk
+*.ap_
+*.aab
+*.dex
+*.class
 *.aar
+*.jar
 *.bundle
 
-# Logs and temporary files
+# --- Logs & Temp ---
 *.log
 .DS_Store
 Thumbs.db
+*.bak
+*.tmp
+*.temp
 
-# Secrets (Add other sensitive files here)
-# google-services.json
-# *.jks
-# *.keystore
+# --- Android Studio / Memory ---
+*.hprof
+
+# --- Keystores (Security) ---
+*.jks
+*.keystore
+*.p12
+*.jceks
+google-services.json
